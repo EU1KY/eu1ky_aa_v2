@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<emIDE_project_file>
+	<FileVersion major="1" minor="7" />
+	<Project>
+		<Option title="AntennaAnalyzer" />
+		<Option pch_mode="2" />
+		<Option compiler="armelfgcc" />
+		<Option virtualFolders="Setup\;Src\;" />
+		<Build>
+			<Target title="Debug">
+				<Option output="output/Debug/exe/AntennaAnalyzer.elf" prefix_auto="1" extension_auto="0" />
+				<Option object_output="output/Debug/obj/" />
+				<Option type="1" />
+				<Option compiler="armelfgcc" />
+				<Compiler>
+					<Add option="-mthumb" />
+					<Add option="-g" />
+					<Add option="-DDEBUG=1" />
+					<Add option="-DUSE_FULL_ASSERT" />
+				</Compiler>
+				<Linker>
+					<Add option="-Tsrc\Flash.ld" />
+				</Linker>
+				<PostOutput>
+					<ConvertedOutput PostOutputCreate="0" />
+					<ConvertedOutput PostOutputType="HEX" />
+					<ConvertedOutput PostOutputFile="${TARGET_OUTPUT_DIR}${TARGET_OUTPUT_BASENAME}" />
+				</PostOutput>
+			</Target>
+			<Target title="Release">
+				<Option output="output/Release/exe/AntennaAnalyzer.elf" prefix_auto="1" extension_auto="0" />
+				<Option object_output="output/Release/obj/" />
+				<Option type="1" />
+				<Option compiler="armelfgcc" />
+				<Compiler>
+					<Add option="-mthumb" />
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-Os" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="-Tsrc\Flash.ld" />
+				</Linker>
+				<PostOutput>
+					<ConvertedOutput PostOutputCreate="1" />
+					<ConvertedOutput PostOutputType="BIN" />
+					<ConvertedOutput PostOutputFile="${TARGET_OUTPUT_DIR}${TARGET_OUTPUT_BASENAME}" />
+				</PostOutput>
+			</Target>
+			<Target title="Release_HY_Mini_VCT6">
+				<Option output="output/Release_HY_Mini_VCT6/exe/AntennaAnalyzer.elf" prefix_auto="1" extension_auto="0" />
+				<Option object_output="output/Release_HY_Mini_VCT6/obj/" />
+				<Option type="1" />
+				<Option compiler="armelfgcc" />
+				<Compiler>
+					<Add option="-mthumb" />
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-Os" />
+					<Add option="-g" />
+					<Add option="-DBSP_HY_MINI_VCT6" />
+				</Compiler>
+				<Linker>
+					<Add option="-Tsrc\Flash_vct6.ld" />
+				</Linker>
+				<PostOutput>
+					<ConvertedOutput PostOutputCreate="1" />
+					<ConvertedOutput PostOutputType="BIN" />
+					<ConvertedOutput PostOutputFile="${TARGET_OUTPUT_DIR}${TARGET_OUTPUT_BASENAME}" />
+				</PostOutput>
+			</Target>
+			<Target title="Release_RedBull_V2">
+				<Option output="output/Release_RedBull_V2/exe/AntennaAnalyzer.elf" prefix_auto="1" extension_auto="0" />
+				<Option object_output="output/Release_RedBull_V2/obj/" />
+				<Option type="1" />
+				<Option compiler="armelfgcc" />
+				<Compiler>
+					<Add option="-mthumb" />
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-Os" />
+					<Add option="-g" />
+					<Add option="-DBSP_HY_REDBULL_V2" />
+				</Compiler>
+				<Linker>
+					<Add option="-Tsrc\Flash.ld" />
+				</Linker>
+				<PostOutput>
+					<ConvertedOutput PostOutputCreate="1" />
+					<ConvertedOutput PostOutputType="BIN" />
+					<ConvertedOutput PostOutputFile="${TARGET_OUTPUT_DIR}${TARGET_OUTPUT_BASENAME}" />
+				</PostOutput>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-fomit-frame-pointer" />
+			<Add option="-Wall" />
+			<Add option="-ffunction-sections" />
+			<Add option="-fdata-sections" />
+			<Add option="-fno-exceptions" />
+			<Add option="-Wno-psabi" />
+			<Add option="-mcpu=cortex-m3" />
+			<Add directory="Src/cmsis" />
+			<Add directory="Src/stdplib/inc" />
+			<Add directory="Src/slots" />
+			<Add directory="Src/lcd" />
+			<Add directory="Src/bitmaps" />
+			<Add directory="Src/dsp" />
+			<Add directory="Src/btusart" />
+			<Add directory="Src/window" />
+			<Add directory="Src/bkup" />
+			<Add directory="Src/syscalls" />
+			<Add directory="Src/config" />
+			<Add directory="Src/si5351" />
+			<Add directory="Src/osl" />
+			<Add directory="Src/bsp" />
+		</Compiler>
+		<Linker>
+			<Add option="--specs=nano.specs" />
+			<Add option="-Wl,-lm,-lc,-lstdc++,-lsupc++" />
+			<Add option="-mthumb" />
+			<Add option="-Wl,--gc-sections" />
+			<Add option="-n" />
+			<Add option="-Wl,-cref" />
+			<Add option="-mcpu=cortex-m3" />
+			<Add option="-Wl,-Map" />
+			<Add option="-Wl,${TARGET_OUTPUT_FILE}.map" />
+		</Linker>
+		<PostOutput>
+			<ConvertedOutput PostOutputCreate="1" />
+			<ConvertedOutput PostOutputType="HEX" />
+			<ConvertedOutput PostOutputFile="${TARGET_OUTPUT_DIR}${TARGET_OUTPUT_BASENAME}" />
+		</PostOutput>
+		<ExtraCommands>
+			<Add after="arm-none-eabi-size ${TARGET_OUTPUT_DIR}${TARGET_OUTPUT_FILENAME}" />
+			<Mode after="always" />
+		</ExtraCommands>
+		<Unit filename="Src/Flash.ld">
+			<Option virtualFolder="Setup/" />
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="Release_RedBull_V2" />
+		</Unit>
+		<Unit filename="Src/Flash_vct6.ld">
+			<Option virtualFolder="Setup/" />
+			<Option target="Release_HY_Mini_VCT6" />
+		</Unit>
+		<Unit filename="Src/bitmaps/bitmaps.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/bitmaps/bitmaps.h" />
+		<Unit filename="Src/bkup/bkup.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/bkup/bkup.h" />
+		<Unit filename="Src/bsp/bsp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/bsp/bsp.h" />
+		<Unit filename="Src/btusart/btusart.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/btusart/btusart.h" />
+		<Unit filename="Src/btusart/fifo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/btusart/fifo.h" />
+		<Unit filename="Src/cmsis/core_cm3.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/cmsis/core_cm3.h" />
+		<Unit filename="Src/cmsis/startup.S" />
+		<Unit filename="Src/cmsis/stm32f10x.h" />
+		<Unit filename="Src/cmsis/stm32f10x_conf.h" />
+		<Unit filename="Src/cmsis/system_stm32f10x.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/cmsis/system_stm32f10x.h" />
+		<Unit filename="Src/config/config.h" />
+		<Unit filename="Src/dsp/dsp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/dsp/dsp.h" />
+		<Unit filename="Src/lcd/LCD.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/lcd/LCD.h" />
+		<Unit filename="Src/lcd/TSC2046.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/lcd/consbig.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/lcd/consbig.h" />
+		<Unit filename="Src/lcd/font.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/lcd/font.h" />
+		<Unit filename="Src/lcd/fran.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/lcd/fran.h" />
+		<Unit filename="Src/lcd/franbig.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/lcd/franbig.h" />
+		<Unit filename="Src/lcd/libnsbmp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/lcd/libnsbmp.h" />
+		<Unit filename="Src/lcd/sdigits.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/lcd/sdigits.h" />
+		<Unit filename="Src/lcd/touch.h" />
+		<Unit filename="Src/main.c" />
+		<Unit filename="Src/osl/osl.h" />
+		<Unit filename="Src/osl/osl_cal.c" />
+		<Unit filename="Src/si5351/gen.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/si5351/gen.h" />
+		<Unit filename="Src/si5351/i2c.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/si5351/i2c.h" />
+		<Unit filename="Src/si5351/si5351.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/si5351/si5351.h" />
+		<Unit filename="Src/stdplib/inc/misc.h" />
+		<Unit filename="Src/stdplib/inc/stm32f10x_adc.h" />
+		<Unit filename="Src/stdplib/inc/stm32f10x_bkp.h" />
+		<Unit filename="Src/stdplib/inc/stm32f10x_can.h" />
+		<Unit filename="Src/stdplib/inc/stm32f10x_cec.h" />
+		<Unit filename="Src/stdplib/inc/stm32f10x_crc.h" />
+		<Unit filename="Src/stdplib/inc/stm32f10x_dac.h" />
+		<Unit filename="Src/stdplib/inc/stm32f10x_dbgmcu.h" />
+		<Unit filename="Src/stdplib/inc/stm32f10x_dma.h" />
+		<Unit filename="Src/stdplib/inc/stm32f10x_exti.h" />
+		<Unit filename="Src/stdplib/inc/stm32f10x_flash.h" />
+		<Unit filename="Src/stdplib/inc/stm32f10x_fsmc.h" />
+		<Unit filename="Src/stdplib/inc/stm32f10x_gpio.h" />
+		<Unit filename="Src/stdplib/inc/stm32f10x_i2c.h" />
+		<Unit filename="Src/stdplib/inc/stm32f10x_iwdg.h" />
+		<Unit filename="Src/stdplib/inc/stm32f10x_pwr.h" />
+		<Unit filename="Src/stdplib/inc/stm32f10x_rcc.h" />
+		<Unit filename="Src/stdplib/inc/stm32f10x_rtc.h" />
+		<Unit filename="Src/stdplib/inc/stm32f10x_sdio.h" />
+		<Unit filename="Src/stdplib/inc/stm32f10x_spi.h" />
+		<Unit filename="Src/stdplib/inc/stm32f10x_tim.h" />
+		<Unit filename="Src/stdplib/inc/stm32f10x_usart.h" />
+		<Unit filename="Src/stdplib/inc/stm32f10x_wwdg.h" />
+		<Unit filename="Src/stdplib/src/misc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stdplib/src/stm32f10x_adc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stdplib/src/stm32f10x_bkp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stdplib/src/stm32f10x_can.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stdplib/src/stm32f10x_cec.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stdplib/src/stm32f10x_crc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stdplib/src/stm32f10x_dac.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stdplib/src/stm32f10x_dbgmcu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stdplib/src/stm32f10x_dma.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stdplib/src/stm32f10x_exti.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stdplib/src/stm32f10x_flash.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stdplib/src/stm32f10x_fsmc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stdplib/src/stm32f10x_gpio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stdplib/src/stm32f10x_i2c.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stdplib/src/stm32f10x_iwdg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stdplib/src/stm32f10x_pwr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stdplib/src/stm32f10x_rcc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stdplib/src/stm32f10x_rtc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stdplib/src/stm32f10x_sdio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stdplib/src/stm32f10x_spi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stdplib/src/stm32f10x_tim.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stdplib/src/stm32f10x_usart.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/stdplib/src/stm32f10x_wwdg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/syscalls/dbgprint.h" />
+		<Unit filename="Src/syscalls/syscalls.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/window/TouchScreenCalibration.c" />
+		<Unit filename="Src/window/TouchScreenCalibration.h" />
+		<Unit filename="Src/window/configwnd.c" />
+		<Unit filename="Src/window/configwnd.h" />
+		<Unit filename="Src/window/generator.c" />
+		<Unit filename="Src/window/generator.h" />
+		<Unit filename="Src/window/hit.c" />
+		<Unit filename="Src/window/hit.h" />
+		<Unit filename="Src/window/measurement.c" />
+		<Unit filename="Src/window/measurement.h" />
+		<Unit filename="Src/window/panvswr2.c" />
+		<Unit filename="Src/window/panvswr2.h" />
+		<Unit filename="Src/window/protocol.c" />
+		<Unit filename="Src/window/protocol.h" />
+		<Extensions>
+			<code_completion />
+			<debugger>
+				<remote_debugging>
+					<options conn_type="0" serial_baud="115200" ip_address="localhost" ip_port="2331" remote_server="J-Link GDB Server" Break_at_Main="0" Break_at_Main_Symbol="main" />
+				</remote_debugging>
+				<remote_debugging target="Debug">
+					<options conn_type="0" serial_baud="115200" ip_address="localhost" ip_port="2331" remote_server="J-Link GDB Server" Break_at_Main="1" Break_at_Main_Symbol="main" additional_cmds="monitor flash device = STM32F103VE&#x0A;monitor reset&#x0A;monitor flash breakpoints = 1&#x0A;monitor flash download = 1&#x0A;load&#x0A;monitor reset&#x0A;monitor reg sp = (0x08000000)&#x0A;monitor reg pc = (0x08000004)&#x0A;b main" />
+				</remote_debugging>
+				<remote_debugging target="Release">
+					<options conn_type="0" serial_baud="115200" ip_address="localhost" ip_port="2331" remote_server="J-Link GDB Server" Break_at_Main="1" Break_at_Main_Symbol="main" additional_cmds="monitor flash device = STM32F103VE&#x0A;monitor reset&#x0A;monitor flash breakpoints = 1&#x0A;monitor flash download = 1&#x0A;load&#x0A;monitor reset&#x0A;monitor reg sp = (0x08000000)&#x0A;monitor reg pc = (0x08000004)&#x0A;b main" />
+				</remote_debugging>
+				<remote_debugging target="Release_HY_Mini_VCT6">
+					<options conn_type="0" serial_baud="115200" ip_address="localhost" ip_port="2331" remote_server="J-Link GDB Server" Break_at_Main="1" Break_at_Main_Symbol="main" additional_cmds="monitor flash device = STM32F103VC&#x0A;monitor reset&#x0A;monitor flash breakpoints = 1&#x0A;monitor flash download = 1&#x0A;load&#x0A;monitor reset&#x0A;monitor reg sp = (0x08000000)&#x0A;monitor reg pc = (0x08000004)&#x0A;b main" />
+				</remote_debugging>
+				<remote_debugging target="Release_RedBull_V2">
+					<options conn_type="0" serial_baud="115200" ip_address="localhost" ip_port="2331" remote_server="J-Link GDB Server" Break_at_Main="1" Break_at_Main_Symbol="main" additional_cmds="monitor flash device = STM32F103VE&#x0A;monitor reset&#x0A;monitor flash breakpoints = 1&#x0A;monitor flash download = 1&#x0A;load&#x0A;monitor reset&#x0A;monitor reg sp = (0x08000000)&#x0A;monitor reg pc = (0x08000004)&#x0A;b main" />
+				</remote_debugging>
+			</debugger>
+			<J-Link>
+				<GDBServer TargetName="Debug">
+					<CmdOption UseGDBServer="1" />
+					<CmdOption TargetDevice="Cortex-M3" />
+					<CmdOption TargetInterface="1" />
+					<CmdOption InterfaceSpeed="1000" />
+					<CmdOption TargetEndian="0" />
+					<CmdOption OverrideExe="0" Filename="" />
+					<CmdOption StartServer="1" />
+					<CmdOption CloseServer="1" />
+					<CmdOption ServerIP="localhost" />
+					<CmdOption ServerPort="2331" />
+					<CmdOption UseAdvancedOptions="0" />
+					<CmdOption SelectJLink="" />
+					<CmdOption InitRegs="1" />
+					<CmdOption LocalhostOnly="1" />
+					<CmdOption Log="0" Filename="" />
+					<CmdOption Silent="0" />
+					<CmdOption StayOnTop="0" />
+					<CmdOption VerifyDownload="0" />
+					<CmdOption NoTargetTimeout="0" />
+					<CmdOption JTAGConf="0" IRPre="0" DRPre="0" />
+					<CmdOption JLinkScript="0" Filename="" />
+					<CmdOption JLinkSettings="0" Filename="" />
+					<CmdOption GDBInit="0" Filename="" />
+					<CmdOption AdditionalOptions="" />
+				</GDBServer>
+				<GDBServer TargetName="Release">
+					<CmdOption UseGDBServer="1" />
+					<CmdOption TargetDevice="Cortex-M3" />
+					<CmdOption TargetInterface="1" />
+					<CmdOption InterfaceSpeed="1000" />
+					<CmdOption TargetEndian="0" />
+					<CmdOption OverrideExe="0" Filename="" />
+					<CmdOption StartServer="1" />
+					<CmdOption CloseServer="1" />
+					<CmdOption ServerIP="localhost" />
+					<CmdOption ServerPort="2331" />
+					<CmdOption UseAdvancedOptions="0" />
+					<CmdOption SelectJLink="" />
+					<CmdOption InitRegs="1" />
+					<CmdOption LocalhostOnly="1" />
+					<CmdOption Log="0" Filename="" />
+					<CmdOption Silent="0" />
+					<CmdOption StayOnTop="0" />
+					<CmdOption VerifyDownload="0" />
+					<CmdOption NoTargetTimeout="0" />
+					<CmdOption JTAGConf="0" IRPre="0" DRPre="0" />
+					<CmdOption JLinkScript="0" Filename="" />
+					<CmdOption JLinkSettings="0" Filename="" />
+					<CmdOption GDBInit="0" Filename="" />
+					<CmdOption AdditionalOptions="" />
+				</GDBServer>
+				<GDBServer TargetName="Release_HY_Mini_VCT6">
+					<CmdOption UseGDBServer="1" />
+					<CmdOption TargetDevice="Cortex-M3" />
+					<CmdOption TargetInterface="1" />
+					<CmdOption InterfaceSpeed="1000" />
+					<CmdOption TargetEndian="0" />
+					<CmdOption OverrideExe="0" Filename="" />
+					<CmdOption StartServer="1" />
+					<CmdOption CloseServer="1" />
+					<CmdOption ServerIP="localhost" />
+					<CmdOption ServerPort="2331" />
+					<CmdOption UseAdvancedOptions="0" />
+					<CmdOption SelectJLink="" />
+					<CmdOption InitRegs="1" />
+					<CmdOption LocalhostOnly="1" />
+					<CmdOption Log="0" Filename="" />
+					<CmdOption Silent="0" />
+					<CmdOption StayOnTop="0" />
+					<CmdOption VerifyDownload="0" />
+					<CmdOption NoTargetTimeout="0" />
+					<CmdOption JTAGConf="0" IRPre="0" DRPre="0" />
+					<CmdOption JLinkScript="0" Filename="" />
+					<CmdOption JLinkSettings="0" Filename="" />
+					<CmdOption GDBInit="0" Filename="" />
+					<CmdOption AdditionalOptions="" />
+				</GDBServer>
+				<GDBServer TargetName="Release_RedBull_V2">
+					<CmdOption UseGDBServer="1" />
+					<CmdOption TargetDevice="Cortex-M3" />
+					<CmdOption TargetInterface="1" />
+					<CmdOption InterfaceSpeed="1000" />
+					<CmdOption TargetEndian="0" />
+					<CmdOption OverrideExe="0" Filename="" />
+					<CmdOption StartServer="1" />
+					<CmdOption CloseServer="1" />
+					<CmdOption ServerIP="localhost" />
+					<CmdOption ServerPort="2331" />
+					<CmdOption UseAdvancedOptions="0" />
+					<CmdOption SelectJLink="" />
+					<CmdOption InitRegs="1" />
+					<CmdOption LocalhostOnly="1" />
+					<CmdOption Log="0" Filename="" />
+					<CmdOption Silent="0" />
+					<CmdOption StayOnTop="0" />
+					<CmdOption VerifyDownload="0" />
+					<CmdOption NoTargetTimeout="0" />
+					<CmdOption JTAGConf="0" IRPre="0" DRPre="0" />
+					<CmdOption JLinkScript="0" Filename="" />
+					<CmdOption JLinkSettings="0" Filename="" />
+					<CmdOption GDBInit="0" Filename="" />
+					<CmdOption AdditionalOptions="" />
+				</GDBServer>
+			</J-Link>
+		</Extensions>
+	</Project>
+</emIDE_project_file>

@@ -1,0 +1,2 @@
+The code uses 8BPP bitmaps converted to C array. There is a Python script, bmp2h.py, that converts all bitmaps found in this folder to appropriate C code. Just run it.
+There is swr1.pdn file, a source used to generate antenna analyzer VSWR graph background bitmap. Just open it with Paint.NET and save as swr1.bmp in this folder, in 8 bits-per-pixel format, then run bmp2h.py to convert it to swr1.h used by antenna analyzer code.

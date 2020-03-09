@@ -1,0 +1,11 @@
+output/*
+*.bmp
+*.orig
+*.emDepend
+*.emLayout
+*.emTemp
+*.depend
+*.elay
+*.ebTemp
+*build_log.html
+Thumbs.db
